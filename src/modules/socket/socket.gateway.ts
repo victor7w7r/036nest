@@ -27,7 +27,7 @@ export class AeroGateway implements OnGatewayConnection {
   @WebSocketServer()
   private readonly server: Server;
 
-  private users: User[] = [];
+  private readonly users: User[] = [];
 
   private sendUsers = (): boolean =>
     this.server.emit('common', this.users);
