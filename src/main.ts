@@ -11,7 +11,7 @@ import winston from 'winston';
 import { AppModule } from './modules/app.module';
 import { clusterize, log } from './utils';
 
-const bootstrap = async (): Promise<void> => {
+const bootstrap = async(): Promise<void> => {
 
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,

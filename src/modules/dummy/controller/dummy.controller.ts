@@ -6,8 +6,7 @@ import {
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import type { Logger } from 'winston';
 
-import type { Dummy } from '../model';
-import { CreateDummyDto, UpdateDummyDto } from '../model/dummy.dto';
+import { type Dummy, CreateDummyDto, UpdateDummyDto } from '../model';
 import { DummyService } from '../service/dummy.service';
 import { HttpExceptionFilter } from '@/filters/http-exception.filter';
 

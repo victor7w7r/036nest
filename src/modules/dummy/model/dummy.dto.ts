@@ -3,7 +3,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { IsNotEmpty, IsString } from "class-validator";
 import { instanceToPlain, plainToClass } from "class-transformer";
 
-import { Dummy } from './dummy.entity';
+import { Dummy } from './';
 
 export class CreateDummyDto {
 

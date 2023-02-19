@@ -2,8 +2,11 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import type { Repository } from 'typeorm';
 
-import type { UpdateDummyDto, CreateDummyDto } from '../model';
-import { Dummy} from '../model';
+import {
+  type UpdateDummyDto,
+  type CreateDummyDto,
+  Dummy
+} from '../model';
 
 @Injectable()
 export class DummyService {
