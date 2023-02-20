@@ -11,10 +11,8 @@ export class CreateDummyDto {
   @IsString()
   readonly name: string;
 
-  toModel(): Dummy {
-    const data = instanceToPlain(this);
-    return plainToClass(Dummy, data);
-  }
+  toModel = (): Dummy =>
+    plainToClass(Dummy, instanceToPlain(this));
 
 }
 

@@ -28,14 +28,18 @@ export class DummyController {
 
   @Get(':id')
   @HttpCode(200)
-  async getClient(@Param('id', ParseIntPipe) id: number): Promise<Dummy> {
+  async getClient(
+    @Param('id', ParseIntPipe) id: number
+  ): Promise<Dummy> {
     this.logger.info(`GET /dummy/${id}`);
     return await this.dummyService.findOne(id);
   }
 
   @Post()
   @HttpCode(201)
-  async createClient(@Body() createDummyDto: CreateDummyDto): Promise<{ message: string }> {
+  async createClient(
+    @Body() createDummyDto: CreateDummyDto
+  ): Promise<{ message: string }> {
     this.logger.info('POST /dummy');
     await this.dummyService.create(createDummyDto);
     return { message: "Dummy is saved successfully" };
@@ -46,8 +50,7 @@ export class DummyController {
   async replaceClient(
     @Body() updateDummyDto: UpdateDummyDto,
     @Param('id', ParseIntPipe) id: number
-    ): Promise<{ message: string }> {
-
+  ): Promise<{ message: string }> {
     this.logger.info(`PUT /dummy/${id}`);
     await this.dummyService.update(updateDummyDto, id);
     return { message: "Dummy is replaced successfully" };
@@ -55,7 +58,9 @@ export class DummyController {
 
   @Delete(':id')
   @HttpCode(200)
-  async removeClient( @Param('id', ParseIntPipe) id: number): Promise<{ message: string }> {
+  async removeClient(
+    @Param('id', ParseIntPipe) id: number
+  ): Promise<{ message: string }> {
     this.logger.warn(`DELETE /dummy/${id}`);
     await this.dummyService.delete(id);
     return { message: "Dummy is deleted successfully" };
