@@ -5,6 +5,7 @@ import type { Repository } from 'typeorm';
 import {
   type UpdateDummyDto,
   type CreateDummyDto,
+  toEntity,
   Dummy
 } from '../model';
 
@@ -16,10 +17,10 @@ export class DummyService {
     private dummyRepository: Repository<Dummy>
   ) {}
 
-  findAll = async(): Promise<Dummy[]> =>
+  readonly findAll = async(): Promise<Dummy[]> =>
     await this.dummyRepository.find();
 
-  private findCheck = async(id: number) =>
+  private readonly findCheck = async(id: number) =>
     await this.dummyRepository.findOneBy({ id });
 
   async findOne(id: number): Promise<Dummy> {
@@ -29,13 +30,13 @@ export class DummyService {
   }
 
   async create(createDummyDto: CreateDummyDto): Promise<void> {
-    await this.dummyRepository.save(createDummyDto.toModel());
+    await this.dummyRepository.save(toEntity(createDummyDto));
   }
 
   async update(updateDummyDto: UpdateDummyDto, id: number): Promise<void> {
     if(!await this.findCheck(id))
       throw new NotFoundException(`This dummy is not found with id ${id}`);
-    await this.dummyRepository.update(id, updateDummyDto.toModel());
+    await this.dummyRepository.update(id, toEntity(updateDummyDto));
   }
 
   async delete(id: number): Promise<void> {

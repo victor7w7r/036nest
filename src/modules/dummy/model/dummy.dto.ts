@@ -7,13 +7,14 @@ import { Dummy } from './';
 
 export class CreateDummyDto {
 
+  readonly id: string;
+
   @IsNotEmpty()
   @IsString()
   readonly name: string;
-
-  toModel = (): Dummy =>
-    plainToClass(Dummy, instanceToPlain(this));
-
 }
 
 export class UpdateDummyDto extends PartialType(CreateDummyDto) {}
+
+export const toEntity = (dummyDto: CreateDummyDto | UpdateDummyDto): Dummy =>
+  plainToClass(Dummy, instanceToPlain(dummyDto));

@@ -29,10 +29,10 @@ export class AeroGateway implements OnGatewayConnection {
 
   private readonly users: User[] = [];
 
-  private sendUsers = (): boolean =>
+  private readonly sendUsers = (): boolean =>
     this.server.emit('common', this.users);
 
-  private clientIndex = (client: Socket): number =>
+  private readonly clientIndex = (client: Socket): number =>
     this.users.findIndex(el => el.id === client.id);
 
   handleConnection(client: Socket): void {
