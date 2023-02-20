@@ -12,7 +12,7 @@ export class AuthService {
     this.configService.get<string>('KEY')
   ];
 
-  validateApiKey = (apiKey: string): string =>
+  readonly validateApiKey = (apiKey: string): string =>
     this.apiKeys.find(apiK => apiKey === apiK);
 
 }
