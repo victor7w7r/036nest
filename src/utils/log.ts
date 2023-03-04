@@ -1,8 +1,8 @@
 import path from 'path';
 import winston from 'winston';
-import { consoleFormat } from "winston-console-format";
+import { consoleFormat } from 'winston-console-format';
 
-export const log = (level = "silly") => winston.createLogger({
+export const log = (level = 'silly') => winston.createLogger({
   level,
   transports: [
     new winston.transports.Console({
@@ -11,13 +11,13 @@ export const log = (level = "silly") => winston.createLogger({
         winston.format.padLevels(),
         consoleFormat({
           showMeta: true,
-          metaStrip: ["timestamp", "service"],
+          metaStrip: ['timestamp', 'service'],
           inspectOptions: {
             depth: Infinity,
             colors: true,
             maxArrayLength: Infinity,
             breakLength: 120,
-            compact: Infinity,
+            compact: Infinity
           }
         })
       )
@@ -32,7 +32,7 @@ export const log = (level = "silly") => winston.createLogger({
       ),
       dirname: path.join(__dirname, './log/'),
       filename: 'info.log',
-      level: 'info',
+      level: 'info'
     })
   ]
 });

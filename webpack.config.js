@@ -16,15 +16,15 @@ module.exports = {
         loader: 'ts-loader',
         options: {
           experimentalWatchApi: true,
-          transpileOnly: true,
+          transpileOnly: true
         },
-        test: /\.ts$/,
+        test: /\.ts$/
       }
     ]
   },
   node: {
     __dirname: false,
-    __filename: false,
+    __filename: false
   },
   optimization: {
     minimize: true,
@@ -33,7 +33,7 @@ module.exports = {
         extractComments: false,
         terserOptions: {
           keep_classnames: true,
-          keep_fnames: true,
+          keep_fnames: true
         }
       })
     ],
@@ -41,7 +41,7 @@ module.exports = {
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist/'),
+    path: path.resolve(__dirname, 'dist/')
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
@@ -62,7 +62,7 @@ module.exports = {
           'ioredis',
           'kafkajs',
           'mqtt',
-          'nats',
+          'nats'
         ];
         if (!lazyImports.includes(resource)) {
           return false;
@@ -79,7 +79,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.ts'],
     mainFields: ['main'],
-    plugins: [new TsconfigPathsPlugin({ configFile: tsConfigFile })],
+    plugins: [new TsconfigPathsPlugin({ configFile: tsConfigFile })]
   },
   target: 'node'
 };

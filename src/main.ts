@@ -4,7 +4,8 @@ import { FastifyAdapter, type NestFastifyApplication } from '@nestjs/platform-fa
 
 import compression from '@fastify/compress';
 import fastifyCsrf from '@fastify/csrf-protection';
-import helmet from 'helmet';
+import fastifyHelmet from '@fastify/helmet';
+
 import { WinstonModule } from 'nest-winston';
 import winston from 'winston';
 
@@ -18,16 +19,20 @@ const bootstrap = async (): Promise<void> => {
     new FastifyAdapter(), {
       cors: true,
       bufferLogs: true,
-      logger: WinstonModule.createLogger(log("error"))
+      logger: WinstonModule.createLogger(log('error'))
     }
   );
 
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
-    transform: true,
+    transform: true
   }));
 
-  app.use(helmet());
+  await app.register(fastifyHelmet, {
+    contentSecurityPolicy: false,
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+    crossOriginEmbedderPolicy: false
+  });
   await app.register(fastifyCsrf);
   await app.register(compression, { encodings: ['gzip', 'deflate'] });
   app.listen(8080, '0.0.0.0');

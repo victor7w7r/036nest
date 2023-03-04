@@ -1,6 +1,6 @@
 import {
   Inject, Injectable,
-  NestMiddleware,
+  type NestMiddleware,
   UnauthorizedException
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';

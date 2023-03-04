@@ -1,9 +1,9 @@
 import {
-  ExceptionFilter, Catch,
-  ArgumentsHost, HttpException
+  type ExceptionFilter, Catch,
+  type ArgumentsHost, HttpException
 } from '@nestjs/common';
 
-import { FastifyReply } from 'fastify';
+import type { FastifyReply } from 'fastify';
 
 @Catch(HttpException)
 export class HttpExceptionFilter implements ExceptionFilter {
@@ -17,12 +17,12 @@ export class HttpExceptionFilter implements ExceptionFilter {
       ? { message: exceptionResponse }
       : (exceptionResponse as object);
 
-    let message = {};
+    let message: { error: string | any } = { error: '' };
 
     if(status == 400) {
-      message = { error: "Cannot process, the format is incorrect" };
+      message = { error: 'Cannot process, the format is incorrect' };
     } else if( status == 401 ) {
-      message = { error: "Not authorized" };
+      message = { error: 'Not authorized' };
     } else {
       message = { error: (error as any).message };
     }

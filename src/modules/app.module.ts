@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { type MiddlewareConsumer, Module } from '@nestjs/common';
 import { APP_FILTER } from '@nestjs/core';
 import { ConfigModule } from '@nestjs/config';
 import { ThrottlerModule } from '@nestjs/throttler';
@@ -15,10 +15,10 @@ import { log } from '@/utils/log';
     ConfigModule.forRoot({ isGlobal: true }),
     ThrottlerModule.forRoot({
       ttl: 60,
-      limit: 10,
+      limit: 10
     }),
     WinstonModule.forRoot(log()),
-    AuthModule,
+    AuthModule
   ],
   providers: [{
     provide: APP_FILTER,

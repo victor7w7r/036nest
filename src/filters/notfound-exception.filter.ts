@@ -1,6 +1,6 @@
 import {
-  ExceptionFilter, Catch,
-  ArgumentsHost, NotFoundException
+  type ExceptionFilter, Catch,
+  type ArgumentsHost, NotFoundException
 } from '@nestjs/common';
 
 @Catch(NotFoundException)
@@ -11,6 +11,6 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
 
     response
       .status(404)
-      .send({"error" : "Not Found"});
+      .send({ 'error' : 'Not Found' });
   }
 }
