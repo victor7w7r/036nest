@@ -1,13 +1,13 @@
-import { Inject } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
+import { Inject } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
 import {
   ConnectedSocket, MessageBody,
-  OnGatewayConnection, SubscribeMessage,
+  type OnGatewayConnection, SubscribeMessage,
   WebSocketGateway, WebSocketServer
-} from "@nestjs/websockets";
+} from '@nestjs/websockets';
 
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import type { Server, Socket } from "socket.io";
+import type { Server, Socket } from 'socket.io';
 import type { Logger } from 'winston';
 
 type User = {
