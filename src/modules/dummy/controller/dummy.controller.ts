@@ -42,7 +42,7 @@ export class DummyController {
   ): Promise<{ message: string }> {
     this.logger.info('POST /dummy');
     await this.dummyService.create(createDummyDto);
-    return { message: "Dummy is saved successfully" };
+    return { message: 'Dummy is saved successfully' };
   }
 
   @Put(':id')
@@ -53,7 +53,7 @@ export class DummyController {
   ): Promise<{ message: string }> {
     this.logger.info(`PUT /dummy/${id}`);
     await this.dummyService.update(updateDummyDto, id);
-    return { message: "Dummy is replaced successfully" };
+    return { message: 'Dummy is replaced successfully' };
   }
 
   @Delete(':id')
@@ -63,7 +63,7 @@ export class DummyController {
   ): Promise<{ message: string }> {
     this.logger.warn(`DELETE /dummy/${id}`);
     await this.dummyService.delete(id);
-    return { message: "Dummy is deleted successfully" };
+    return { message: 'Dummy is deleted successfully' };
   }
 
 }
